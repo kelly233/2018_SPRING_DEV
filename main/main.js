@@ -4,16 +4,17 @@ function IdTest(str,num) {
         return false;
     return true;
 }
-function JudgeTheLengthOfMessage(len){
-    if(len < 7)
-        return false;
-    return true;
+function JudgeTheFormatOfMessage(str){
+   let re =  /[\d\w]+(\s[-\+]?\d+){6}/;
+   if(re.exec(str) !== null)
+       return true;
+   return false;
 }
 
 function Whether1CoordinateEquals0(arr1,arr2,id) {
     let [x1,y1,z1] = [arr2[1],arr2[2],arr2[3]];
     if(!(x1 === arr1[1] && y1 === arr1[2]&& z1 === arr1[3]|| 
-            !JudgeTheLengthOfMessage(arr2.length,id)))
+            !JudgeTheFormatOfMessage(arr2)))
         return false;
     return true;
 }
@@ -38,13 +39,15 @@ function PrintResult(arr,id) {
 function JudgetheSateOfUAV(str,id) {
     let arr0 = str.split('\n');
     let arr3 = arr0[id].split(' ');
+    if(/[\d\w]+(\s[-\+]?\d+){3}/.exec(arr0[0])===null)
+        return "Error: " + id;
     if(!Whether1CoordinateEquals0(arr0[0],arr0[1],id) )
-        return "Error "+id;
+        return "Error: "+id;
     for (let i = 2;i<= id;i++){
         let arr1 = arr0[i-1].split(' ');
         let arr2 = arr0[i].split(' ');
-        if(!JudgeTheLengthOfMessage(arr2.length)||!JudgeTheCoordinate(arr1,arr2))
-               return "Error " + id;
+        if(!JudgeTheFormatOfMessage(arr0[i])||!JudgeTheCoordinate(arr1,arr2))
+               return "Error: " + id;
     }
     return PrintResult(arr3,id);
     }
