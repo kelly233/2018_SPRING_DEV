@@ -18,6 +18,7 @@ you can also judge it by looking my main.js and my main-spec.js;
 
 5.End!!!!
 
+
 (4)I have draw a tasking picture in my folder,it can help you to understand my program easier;
 
 (5)I also put it in my github,my address is https://github.com/kelly233;
