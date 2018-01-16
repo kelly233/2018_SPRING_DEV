@@ -49,7 +49,6 @@ function JudgetheSateOfUAV(str,id) {
     return PrintResult(arr3,id);
     }
 
-
 module.exports = function UAV(message,id) {
     if(!IdTest(message,id))
         return "Cannot find "+id;
